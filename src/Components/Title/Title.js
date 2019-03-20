@@ -26,7 +26,7 @@ class Title extends Component {
         })
     }
     keyPressHandler(event) {
-        if (event.key == 'Enter') {
+        if (event.key === 'Enter') {
             this.setState({
                 ...this.state,
                 isInput: false
