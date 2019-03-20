@@ -18,6 +18,7 @@ class Controller extends Component {
             pause:true,
             lap:true
         })
+        this.props.start();
     }
     pauseHandler(){
         this.setState({
@@ -27,9 +28,10 @@ class Controller extends Component {
             lap:false,
             reset:true
         })
+        this.props.pause();
     }
    lapHandler(){
-       
+       this.props.lap();
     }
    resetHandler(){
         this.setState({
@@ -38,6 +40,7 @@ class Controller extends Component {
             lap:false,
             reset:false
         }) 
+        this.props.reset();
     }
 
     getController(){
@@ -45,7 +48,7 @@ class Controller extends Component {
 
         if(this.state.start && !this.state.reset){
             output = (
-                <div>
+                <div className="my-5">
                     <button 
                     className = "btn btn-success btn-lg px-5 ml-5"
                     onClick = { event => this.startHandler() }
@@ -54,20 +57,20 @@ class Controller extends Component {
             )
         } else if(this.state.pause && this.state.lap){
             output =(
-                <div>
+                <div className="my-5">
                     <button 
                     className = "btn btn-primary btn-lg px-5 ml-5"
                     onClick = { event => this.pauseHandler() }
                     >Pause</button>
                     <button 
                     className = "btn btn-warning btn-lg px-5 ml-5"
-                    onClick = { event => this.laptHandler() }
+                    onClick = { event => this.lapHandler() }
                     >Lap</button>
                 </div>
             )
         }else if(this.state.start && this.state.reset){
             output =(
-                <div>
+                <div className="my-5">
                 <button 
                 className = "btn btn-success btn-lg px-5 ml-5"
                 onClick = { event => this.startHandler() }
